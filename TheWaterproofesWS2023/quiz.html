@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Use Less Quiz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+ 
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+ 
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+ 
+ </head>
+
+<body class="body-quiz">
+
+ 
+    <!-- Navbar & Hero Start -->
+    <div class="container-xxl position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                   <a href="index.html" class="nav-item nav-link">Home</a>
+                   <a href="index.html" class="nav-item nav-link">The Issue</a>
+                   <a href="quiz.html" class="nav-item nav-link">Survey</a>
+                   <a href="index.html" class="nav-item nav-link">Water Saving Tips</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <h1 class="title-quiz">Water Consumption Survey</h1>
+    <p class="question-text">Please answer the following questions:</p>
+    <br>
+    <div><form style="text-align: center; color: rgb(0, 0, 0);" >
+        <label for="q1">How many times do you shower per week?</label>
+        <input type="number" id="q1" name="q1"><br><br>
+       
+        <label for="q2">How many minutes do you spend in the shower? (on average)</label>
+        <input type="number" id="q2" name="q2"><br><br>
+       
+        <label for="q3">How many times a week do you wash your clothes in a washing machine (per load)</label>
+        <input type="number" id="q3" name="q3"><br><br>
+
+
+        <label for="q4">How many times do you take a bath a week? ( 0 if you don't have a bath)</label>
+        <input type="number" id="q4" name="q4"><br><br>
+
+
+        <label for="q5">How many times do you typically flush the toilet per day</label>
+        <input type="number" id="q5" name="q5"><br><br>
+
+
+        <label for="q6">How many times per day do you typically use the tap? (washing hands, brushing teeth, washing face, etc.)</label>
+        <input type="number" id="q6" name="q6"><br><br>
+
+
+        <label for="q7">How many times do you wash your dishes per week?</label>
+        <input type="number" id="q7" name="q7"><br><br>
+
+
+        <label for="q8"> For how many people did you do these calculations for?</label>
+        <input type="number" id="q8" name="q8"><br><br>
+       
+        <button type="submit" class="submit-button">Submit</button>
+
+        <br><br><br><br>
+
+                   
+        <table>
+          <tr>
+            <th>Water usage</th>
+            <th>Average usage 16-25 in L</th>
+            <th>Your Results in L</th>
+          </tr>
+          <tr>
+            <td>Water used in shower per day </td>
+            <td>98</td>
+            <td><span id="result1"></span></td>
+          </tr>
+          <tr>
+            <td>Water used by washing clothes per day</td>
+            <td>25.2</td>
+            <td><span id="result2"></span></td>
+          </tr>
+          <tr>
+            <td>Water used by taking baths per day</td>
+            <td>15</td>
+            <td><span id="result3"></span></td>
+          </tr>
+          <tr>
+            <td>Water used by flushing toilet per day</td>
+            <td>35.6</td>
+            <td><span id="result4"></span></td>
+          </tr>
+          <tr>
+            <td>Water used by using tap water per day</td>
+            <td>18</td>
+            <td><span id="result5"></span></td>
+          </tr>
+          <tr>
+            <td>Water used by washing dishes per day</td>
+            <td>5.5</td>
+            <td><span id="result6"></span></td>
+          </tr>
+          <tr>
+            <td><b>Total water used in one day</b></td>
+            <td>196.3</td>
+            <td><b><span id="result7"></span></td>
+          </tr>
+        </table>
+    </form>
+
+     <br><br>
+<div> 
+  <br>   
+  <h4 class="title-quiz" style="font-size: 40px;"><b>Analysis of your quiz results:</b></h4>
+  </div>
+
+    <br>
+    <p class="question-text">Check out the pie chart of your results and try to follow the recommended tips in order to reduce your water consumption!</p>
+    <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+    </div>
+    <br>
+    <div id="message" style="text-align: center; display: none; color: black;">
+      <p><strong>You have exceeded the limit in the following categories:</strong></p>
+      <ul id="exceededCategories"></ul>
+  </div>
+</div>
+
+<br>
+<div style=" text-align: center">
+  <button class="submit-button" onclick="window.location.href='index.html#tips'">Click Here to see the tips!</button>
+</div>
+<br>
+
+<p class="title-quiz" style="text-align:center; font-size: 30px;">
+   Thank you for taking the quiz! Remember, every drop counts. Let's save water together!
+</p>
+<br>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var q1 = parseInt(document.getElementById('q1').value);
+        var q2 = parseInt(document.getElementById('q2').value);
+        var q3 = parseInt(document.getElementById('q3').value);
+        var q4 = parseInt(document.getElementById('q4').value);
+        var q5 = parseInt(document.getElementById('q5').value);
+        var q6 = parseInt(document.getElementById('q6').value);
+        var q7 = parseInt(document.getElementById('q7').value);
+        var q8 = parseInt(document.getElementById('q8').value);
+
+          // water consumption results
+            q1 = Math.floor((q1 * 7.8 * q2) / 7); // water per day in shower
+            q2 = Math.floor((q2 * 7.8) /7) ; //liters per shower per day
+            q3 = Math.floor((q3 * 48.9) /7) ; // water per week clothes washing
+            q4 = Math.floor((q4 * 150) / 7); // water bath per day
+            q5 = Math.floor(q5 * 5.2); // toilet water per day (avg of full flush and partial flush)
+            q6 = Math.floor(q6 *  4.6); // tap water per day
+            q7 = Math.floor((q7 * 8.4) /7); // dish washing (avg of hand washing and dishwashing)
+            q8 = Math.floor((q8 * (q7 + q6 +q5 + q4 + q3 + q2 + q1)))// total
+
+            // results table
+            document.getElementById('result1').innerHTML = q1; // shower
+            document.getElementById('result2').innerHTML = q3; // washing clothes
+            document.getElementById('result3').innerHTML = q4; // bath water
+            document.getElementById('result4').innerHTML = q5; // toilet flush
+            document.getElementById('result5').innerHTML = q6; // tap water
+            document.getElementById('result6').innerHTML = q7; // dish washing
+            document.getElementById('result7').innerHTML = q8; // total water
+
+                // Compare usage to category average and change color accordingly
+    function compareUsage(value, average) {
+      if (value <= average) {
+        return 'green';
+      } else if (value <= average * 1.2) {
+        return 'orange';
+      } else {
+        return 'red';
+      }
+    }
+
+    // Update color for each result based on comparison with average
+    document.getElementById('result1').style.color = compareUsage(q1, 98);
+    document.getElementById('result2').style.color = compareUsage(q3, 25.2);
+    document.getElementById('result3').style.color = compareUsage(q4, 15);
+    document.getElementById('result4').style.color = compareUsage(q5, 35.6);
+    document.getElementById('result5').style.color = compareUsage(q6, 18);
+    document.getElementById('result6').style.color = compareUsage(q7, 5.5);
+    document.getElementById('result7').style.color = compareUsage(q8, 196.3);
+
+
+
+// Get the message and exceeded categories elements by their IDs
+var messageElement = document.getElementById('message');
+var exceededCategoriesElement = document.getElementById('exceededCategories');
+
+// Create an array to store the exceeded categories
+var exceededCategories = [];
+
+// Check each category and add exceeded categories to the array
+if (q1 > 98) {
+    exceededCategories.push('Shower');
+}
+if (q3 > 25.2) {
+    exceededCategories.push('Washing Clothes');
+}
+if (q4 > 15) {
+    exceededCategories.push('Bath Water');
+}
+if (q5 > 35.6) {
+    exceededCategories.push('Toilet Flush');
+}
+if (q6 > 18) {
+    exceededCategories.push('Tap Water');
+}
+if (q7 > 5.5) {
+    exceededCategories.push('Dish Washing');
+}
+
+// Check if there are any exceeded categories
+if (exceededCategories.length > 0) {
+    // Show the message element
+    messageElement.style.display = 'block';
+
+    // Iterate over the exceeded categories and add them to the list
+    exceededCategories.forEach(function(category) {
+        var li = document.createElement('li');
+        li.textContent = category;
+        exceededCategoriesElement.appendChild(li);
+    });
+}
+            // pie chart
+            var ctx = document.getElementById('pieChart').getContext('2d');
+            var pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Shower', 'Washing Clothes', 'Bath Water', 'Toilet Flush', 'Tap Water', 'Dish Washing'],
+                    datasets: [{
+                        data: [q1, q3, q4, q5, q6, q7],
+                        backgroundColor: [
+                            'rgb(66, 66, 255)', // dark blue color
+                            'rgb(102, 102, 255)', // medium blue color
+                            'rgb(133, 133, 255)', // light blue color
+                            'rgb(166, 102, 255)', // light purple color
+                            'rgb(204, 102, 255)', // medium purple color
+                            'rgb(238, 130, 238)' // dark purple color
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-primary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5 px-lg-5">
+      <div class="row g-5">
+          <div class="col-md-6 col-lg-3">
+              <h5 class="text-white mb-4">Get In Touch</h5>
+              <p><i class="fa fa-map-marker-alt me-3"></i>Stichting Waternet<br>
+                  Korte Ouderkerkerdijk 7<br>
+                  1096 AC Amsterdam</p>
+              <p><i class="fa fa-phone-alt me-3"></i>0900 93 94 (home)<br>+31 889 39 4000 (abroad)</p>
+          </div>
+          <div class="col-md-6 col-lg-3">
+              <h5 class="text-white mb-4">Popular Links</h5>
+              <a class="btn btn-link" href="https://www.waternet.nl/ons-water/" target="_blank">Our Water</a>
+              <a class="btn btn-link" href="https://www.waternet.nl/contact/"target="_blank">Contact Us</a>
+              <a class="btn btn-link" href="https://www.waternet.nl/werkzaamheden/" target="_blank">Projects</a>
+              <a class="btn btn-link" href="https://www.waternet.nl/service-en-contact/" target="_blank">Service</a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+              <h5 class="text-white mb-4">Newsletter</h5>
+              <p>Sign up for more information on how to continue preserving Amsterdam's most valuable resource
+                  and share your insights with us</p>
+              <div class="position-relative w-100 mt-4">
+                  <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
+                  <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container px-lg-5">
+      <div class="copyright">
+          <div class="row">
+              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                  <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                  Designed By <a class="border-bottom" href="https://htmlcodex.com" target="_blank">HTML Codex</a> and The Waterproofers
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Footer End -->
+
+   <!-- JavaScript Libraries -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="lib/wow/wow.min.js"></script>
+   <script src="lib/easing/easing.min.js"></script>
+   <script src="lib/waypoints/waypoints.min.js"></script>
+   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+   <script src="lib/isotope/isotope.pkgd.min.js"></script>
+   <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+   <!-- Template Javascript -->
+   <script src="js/main.js"></script>
+</body>
+</html>
